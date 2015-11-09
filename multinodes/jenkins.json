@@ -1,0 +1,36 @@
+{
+  "id": "jenkins",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "agileek/docker-jenkins",
+      "privileged": true,
+      "forcePullImage":true,
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 0, "servicePort": 8085, "protocol": "tcp" }
+      ]
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/jenkins_home",
+        "hostPath": "/jenkins",
+        "mode": "RW"
+      }
+    ]
+  },
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 256,
+  "constraints": [["hostname", "CLUSTER", "mesos"]],
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "path": "/",
+      "gracePeriodSeconds": 180,
+      "intervalSeconds": 20,
+      "maxConsecutiveFailures": 3
+    }
+  ]
+}

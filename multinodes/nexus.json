@@ -1,0 +1,28 @@
+{
+  "id": "nexus",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "sonatype/nexus",
+      "forcePullImage":true,
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8081, "hostPort": 0, "servicePort": 8082, "protocol": "tcp" }
+      ]
+    }
+  },
+  "instances": 1,
+  "cpus": 0.1,
+  "mem": 128,
+  "constraints": [["hostname", "CLUSTER", "mesos"]],
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "path": "/",
+      "gracePeriodSeconds": 180,
+      "intervalSeconds": 20,
+      "maxConsecutiveFailures": 3
+    }
+  ]
+}

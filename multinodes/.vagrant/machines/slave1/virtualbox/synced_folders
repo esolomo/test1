@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/solomo/SainsBurry/marathon/multinodes","disabled":false},"v-csc-4":{"id":"v-csc-4","guestpath":"/tmp/vagrant-chef/12d19fa9dbf9f7cdc5c8e99fbec9d71b/cookbooks","hostpath":"/Users/solomo/.berkshelf/vagrant-berkshelf/shelves/berkshelf20151109-77255-1s6f9vk-slave1","disabled":false}}}
